@@ -18,6 +18,9 @@ func SetFlags() {
 
 //ValidationCommand Function that checks the validity of the command entered by the user. Returns (true/false).
 func ValidationCommand(commands []string) bool {
+	if len(commands) < 1 {
+		return false
+	}
 	if strings.ToLower(commands[0]) == "list" && len(commands) == 1 {
 		return true
 	} else if strings.ToLower(commands[0]) == "search" && len(commands) >= 2 {
