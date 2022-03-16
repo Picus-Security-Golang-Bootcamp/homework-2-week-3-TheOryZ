@@ -17,34 +17,34 @@ func SetFlags() {
 }
 
 //ValidationCommand Function that checks the validity of the command entered by the user. Returns (true/false).
-func ValidationCommand(commands []string) bool {
+func ValidationCommand(commands []string) (err error) {
 	if len(commands) < 1 {
-		return false
+		return err
 	}
 	if strings.ToLower(commands[0]) == "list" && len(commands) == 1 {
-		return true
+		return nil
 	} else if strings.ToLower(commands[0]) == "search" && len(commands) >= 2 {
-		return true
+		return nil
 	} else if strings.ToLower(commands[0]) == "get" && len(commands) == 2 {
 		_, err := strconv.Atoi(commands[1])
 		if err != nil {
-			return false
+			return err
 		}
-		return true
+		return nil
 	} else if strings.ToLower(commands[0]) == "delete" && len(commands) == 2 {
 		_, err := strconv.Atoi(commands[1])
 		if err != nil {
-			return false
+			return err
 		}
-		return true
+		return nil
 	} else if strings.ToLower(commands[0]) == "buy" && len(commands) == 3 {
 		for i := 1; i < 3; i++ {
 			_, err := strconv.Atoi(commands[i])
 			if err != nil {
-				return false
+				return err
 			}
 		}
-		return true
+		return nil
 	}
-	return false
+	return err
 }

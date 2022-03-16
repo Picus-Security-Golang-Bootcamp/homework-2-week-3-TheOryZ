@@ -14,6 +14,12 @@ type Book struct {
 	Price          float64 `json:"Price"`
 	ISBN           string  `json:"ISBN"`
 	ReleaseDate    string  `json:"Release_Date"`
-	AuthorID       int     `json:"Author_Id,omitempty"`
+	Author         Author  `json:"Author"`
 	IsDeleted      bool    `json:"IsDeleted"`
+}
+
+//Author author detail model
+type Author struct {
+	ID   int    `json:"Id"`
+	Name string `json:"Name"`
 }

@@ -39,7 +39,7 @@ func GetById(id int) (*m.Book, error) {
 				book.Price = books.Books[i].Price
 				book.ISBN = books.Books[i].ISBN
 				book.ReleaseDate = books.Books[i].ReleaseDate
-				book.AuthorID = books.Books[i].AuthorID
+				book.Author = books.Books[i].Author
 				book.IsDeleted = books.Books[i].IsDeleted
 				break
 			}
