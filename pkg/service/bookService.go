@@ -14,3 +14,8 @@ func GetAllBooks() (*m.Books, error) {
 func GetById(id int) (*m.Book, error) {
 	return b.GetById(id)
 }
+
+//SearchWithTitle Function that searches for a book based on the entered value
+func SearchWithTitle(s string) (*m.Book, error) {
+	return b.SearchWithTitle(s)
+}
