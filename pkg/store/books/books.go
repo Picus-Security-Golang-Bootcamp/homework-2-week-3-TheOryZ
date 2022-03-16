@@ -78,3 +78,8 @@ func SearchWithTitle(s string) (*m.Book, error) {
 	defer jsonFile.Close()
 	return &book, nil
 }
+
+//DeleteBook
+func DeleteBook(id int) (*m.Book, error) {
+	return nil, nil
+}
