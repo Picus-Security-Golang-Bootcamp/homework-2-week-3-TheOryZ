@@ -50,7 +50,7 @@ func GetById(id int) (*m.Book, error) {
 	return &book, nil
 }
 
-//SearchWithTitle Function that searches for a book based on the entered value
+//SearchWithTitle Function that searches for a book based on the entered value (Without Deleted items)
 func SearchWithTitle(s string) (*m.Books, error) {
 	var bookList m.Books
 
@@ -62,7 +62,7 @@ func SearchWithTitle(s string) (*m.Books, error) {
 		var books m.Books
 		json.Unmarshal(byteValue, &books)
 		for i := 0; i < len(books.Books); i++ {
-			if strings.Contains(strings.ToLower(books.Books[i].Title), strings.ToLower(s)) {
+			if strings.Contains(strings.ToLower(books.Books[i].Title), strings.ToLower(s)) && !books.Books[i].IsDeleted {
 				bookList.Books = append(bookList.Books, books.Books[i])
 			}
 		}

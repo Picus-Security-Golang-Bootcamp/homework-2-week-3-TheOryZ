@@ -34,7 +34,7 @@ func main() {
 			books, err := s.SearchWithTitle(search)
 			if err != nil {
 				fmt.Println("An error occurred while executing the SearchWithTitle function. Error :", err.Error())
-			} else if len(books.Books[0].Title) <= 0 {
+			} else if len(books.Books) <= 0 {
 				fmt.Println(strings.Repeat("*", 25))
 				fmt.Println("No information was found for the book you were looking for.")
 				fmt.Println(strings.Repeat("*", 25))

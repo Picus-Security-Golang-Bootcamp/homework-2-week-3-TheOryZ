@@ -15,7 +15,7 @@ func GetById(id int) (*m.Book, error) {
 	return b.GetById(id)
 }
 
-//SearchWithTitle Function that searches for a book based on the entered value
+//SearchWithTitle Function that searches for a book based on the entered value (Without Deleted items)
 func SearchWithTitle(s string) (*m.Books, error) {
 	return b.SearchWithTitle(s)
 }
