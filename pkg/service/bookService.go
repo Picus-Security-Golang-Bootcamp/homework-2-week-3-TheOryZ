@@ -19,3 +19,8 @@ func GetById(id int) (*m.Book, error) {
 func SearchWithTitle(s string) (*m.Book, error) {
 	return b.SearchWithTitle(s)
 }
+
+//DeleteBook
+func DeleteBook(id int) error {
+	return b.DeleteBook(id)
+}

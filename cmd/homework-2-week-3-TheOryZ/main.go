@@ -57,6 +57,16 @@ func main() {
 				fmt.Println("Book Title: " + book.Title)
 				fmt.Printf("Book Price: %v\n", book.Price)
 				fmt.Printf("Book Stocks: %v\n", book.NumberOfStocks)
+				fmt.Printf("Book is Deleted: %v\n", book.IsDeleted)
+				fmt.Println(strings.Repeat("*", 25))
+			}
+		} else if command == "delete" {
+			bookId, _ := strconv.Atoi(args[1])
+			err := s.DeleteBook(bookId)
+			if err != nil {
+				fmt.Println("An error occurred while executing the DeleteBook function. Error :", err.Error())
+			} else {
+				fmt.Println("Book deletion successful")
 				fmt.Println(strings.Repeat("*", 25))
 			}
 		}

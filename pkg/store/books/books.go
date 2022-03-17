@@ -80,6 +80,29 @@ func SearchWithTitle(s string) (*m.Book, error) {
 }
 
 //DeleteBook
-func DeleteBook(id int) (*m.Book, error) {
-	return nil, nil
+func DeleteBook(id int) error {
+	jsonFile, err := os.Open("../../pkg/store/db/books.json")
+	if err != nil {
+		return err
+	} else {
+		byteValue, _ := ioutil.ReadAll(jsonFile)
+		var books m.Books
+		json.Unmarshal(byteValue, &books)
+		for i := 0; i < len(books.Books); i++ {
+			if books.Books[i].ID == id {
+				books.Books[i].IsDeleted = true
+				break
+			}
+		}
+		byteValue, err = json.Marshal(books)
+		if err != nil {
+			return err
+		}
+		err = ioutil.WriteFile("../../pkg/store/db/books.json", byteValue, 0644)
+		if err != nil {
+			return err
+		}
+		defer jsonFile.Close()
+		return nil
+	}
 }
