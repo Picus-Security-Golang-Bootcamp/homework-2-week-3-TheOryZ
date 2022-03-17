@@ -31,18 +31,20 @@ func main() {
 		} else if command == "search" {
 			bookTitle := args[1:]
 			search := strings.Join(bookTitle, " ")
-			book, err := s.SearchWithTitle(search)
+			books, err := s.SearchWithTitle(search)
 			if err != nil {
 				fmt.Println("An error occurred while executing the SearchWithTitle function. Error :", err.Error())
-			} else if len(book.Title) <= 0 {
+			} else if len(books.Books[0].Title) <= 0 {
 				fmt.Println(strings.Repeat("*", 25))
 				fmt.Println("No information was found for the book you were looking for.")
 				fmt.Println(strings.Repeat("*", 25))
 			} else {
-				fmt.Println("Book Title: " + book.Title)
-				fmt.Printf("Book Price: %v\n", book.Price)
-				fmt.Printf("Book Stocks: %v\n", book.NumberOfStocks)
-				fmt.Println(strings.Repeat("*", 25))
+				for i := 0; i < len(books.Books); i++ {
+					fmt.Println("Book Title: " + books.Books[i].Title)
+					fmt.Printf("Book Price: %v\n", books.Books[i].Price)
+					fmt.Printf("Book Stocks: %v\n", books.Books[i].NumberOfStocks)
+					fmt.Println(strings.Repeat("*", 25))
+				}
 			}
 		} else if command == "get" {
 			bookId, _ := strconv.Atoi(args[1])
