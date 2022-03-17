@@ -1,25 +1,25 @@
 ## Homework | Week 3
-`Not: Ödevi yeni bir repoya ekleyeceksiniz. Var olan reponuzda bir güncelleme olmayacak. "homework-2..." şeklinde yeni bir repo üzerinde çalışacaksınız.`
 
 
-Elimizde bir kitap listesi var. 
-Kitap alanları şöyle;
+### Book list application with Go
+
+We have books struct object and the fields are;
 ```
-- Kitap ID
-- Kitap Adı
-- Sayfa Sayısı
-- Stok Sayısı
-- Fiyatı
-- Stock Kodu
+- Book ID
+- Book Title
+- Number of Page
+- Number of Stock
+- Price
+- Stock Code
 - ISBN
-- Yazar bilgisi (ID ve İsim)
+- Author (ID ve Name)
 ```
 
-1. Tüm kitapları listele (list)
-2. Verilen girdi hangi kitap isimlerinde geçiyorsa o kitapları listele (search)
-3. ID'ye göre kitabı yazdır
-4. IDsi verilen kitabı sil. (Silinen kitabın ID'ye göre geliyor olması gerekiyor.)
-5. IDsi verilen kitabı istenilen adet kadar satın al ve kitabın son bilgilerini ekrana yazdır.
+1. List all books (list)
+2. List the books in which the given entry is in the titles of the books. (search)
+3. Get book by ID (get)
+4. Delete the book whose ID is given. (delete)
+5. Buy the book with the ID given as many as you want and print the last information of the book on the screen.
 
 Yanlış komut girildiğinde ekrana usage'ı yazdıracak. 
 

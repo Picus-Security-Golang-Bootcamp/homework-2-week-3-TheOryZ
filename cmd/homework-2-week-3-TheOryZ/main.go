@@ -12,7 +12,7 @@ func main() {
 	s.SetFlags()
 	args := os.Args[1:]
 	validStatus := s.ValidationCommand(args)
-	if validStatus != nil {
+	if !validStatus {
 		fmt.Println("Please enter a valid command. You can see the commands by typing -help.")
 	} else {
 		command := strings.ToLower(args[0])
