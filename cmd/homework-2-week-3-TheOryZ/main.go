@@ -69,6 +69,21 @@ func main() {
 				fmt.Println("Book deletion successful")
 				fmt.Println(strings.Repeat("*", 25))
 			}
+		} else if command == "buy" {
+			bookId, _ := strconv.Atoi(args[1])
+			quantity, _ := strconv.Atoi(args[2])
+			statusBuying := s.AvailabilityOfBuying(bookId, quantity)
+			if !statusBuying {
+				fmt.Println("You cannot make this buying. There may not be enough stock or the book may have been deleted.")
+			} else {
+				err := s.BuyBook(bookId, quantity)
+				if err != nil {
+					fmt.Println("An error occurred while executing the BuyBook function. Error :", err.Error())
+				} else {
+					fmt.Println("Book buying successful")
+					fmt.Println(strings.Repeat("*", 25))
+				}
+			}
 		}
 	}
 }

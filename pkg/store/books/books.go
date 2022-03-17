@@ -79,7 +79,7 @@ func SearchWithTitle(s string) (*m.Book, error) {
 	return &book, nil
 }
 
-//DeleteBook
+//DeleteBook Deletes the book based on the sent book id
 func DeleteBook(id int) error {
 	jsonFile, err := os.Open("../../pkg/store/db/books.json")
 	if err != nil {
@@ -105,4 +105,56 @@ func DeleteBook(id int) error {
 		defer jsonFile.Close()
 		return nil
 	}
+}
+
+//BuyBook Makes the buying with the entered book id and quantity information.
+func BuyBook(id, quantity int) error {
+	jsonFile, err := os.Open("../../pkg/store/db/books.json")
+	if err != nil {
+		return err
+	} else {
+		byteValue, _ := ioutil.ReadAll(jsonFile)
+		var books m.Books
+		json.Unmarshal(byteValue, &books)
+		for i := 0; i < len(books.Books); i++ {
+			if books.Books[i].ID == id {
+				books.Books[i].NumberOfStocks = books.Books[i].NumberOfStocks - quantity
+				break
+			}
+		}
+		byteValue, err = json.Marshal(books)
+		if err != nil {
+			return err
+		}
+		err = ioutil.WriteFile("../../pkg/store/db/books.json", byteValue, 0644)
+		if err != nil {
+			return err
+		}
+		defer jsonFile.Close()
+		return nil
+	}
+}
+
+//AvailabilityOfBuying It returns the status of being sold by comparing the sent book id and stock.
+func AvailabilityOfBuying(id, quantity int) bool {
+	jsonFile, err := os.Open("../../pkg/store/db/books.json")
+	if err != nil {
+		return false
+	} else {
+		byteValue, _ := ioutil.ReadAll(jsonFile)
+		var books m.Books
+		json.Unmarshal(byteValue, &books)
+		for i := 0; i < len(books.Books); i++ {
+			if books.Books[i].ID == id {
+				if books.Books[i].IsDeleted {
+					return false
+				}
+				if books.Books[i].NumberOfStocks < quantity {
+					return false
+				}
+			}
+		}
+	}
+	defer jsonFile.Close()
+	return true
 }

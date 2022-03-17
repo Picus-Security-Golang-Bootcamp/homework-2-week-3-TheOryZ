@@ -24,3 +24,13 @@ func SearchWithTitle(s string) (*m.Book, error) {
 func DeleteBook(id int) error {
 	return b.DeleteBook(id)
 }
+
+//BuyBook Makes the buying with the entered book id and quantity information.
+func BuyBook(id, quantity int) error {
+	return b.BuyBook(id, quantity)
+}
+
+//AvailabilityOfBuying It returns the status of being sold by comparing the sent book id and stock.
+func AvailabilityOfBuying(id, quantity int) bool {
+	return b.AvailabilityOfBuying(id, quantity)
+}
