@@ -136,3 +136,9 @@ There is a .json file in the application where the book information is kept.
    ]
 }
 ```
+
+### Medium Link
+
+You can also see an article about race condition from the link below.
+
+https://medium.com/@kadirrturan/go-dilinde-race-condition-92cea96729f0
